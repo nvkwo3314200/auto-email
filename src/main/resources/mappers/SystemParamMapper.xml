@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mail.dao.SystemParamMapper" >
+  <resultMap id="BaseResultMap" type="com.mail.pojo.SystemParam" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="p_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_key" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_value" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_value2" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_value3" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="p_value4" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="create_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="remarks" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="last_update_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="last_update_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="p_value_number" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, p_type, p_key, p_value, p_value2, p_value3, p_value4, create_date, remarks, create_by, 
+    last_update_date, last_update_by, p_value_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_param
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from system_param
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mail.pojo.SystemParam" >
+    insert into system_param (id, p_type, p_key, 
+      p_value, p_value2, p_value3, 
+      p_value4, create_date, remarks, 
+      create_by, last_update_date, last_update_by, 
+      p_value_number)
+    values (#{id,jdbcType=INTEGER}, #{pType,jdbcType=VARCHAR}, #{pKey,jdbcType=VARCHAR}, 
+      #{pValue,jdbcType=VARCHAR}, #{pValue2,jdbcType=VARCHAR}, #{pValue3,jdbcType=TIMESTAMP}, 
+      #{pValue4,jdbcType=DOUBLE}, #{createDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
+      #{pValueNumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mail.pojo.SystemParam" >
+    insert into system_param
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pType != null" >
+        p_type,
+      </if>
+      <if test="pKey != null" >
+        p_key,
+      </if>
+      <if test="pValue != null" >
+        p_value,
+      </if>
+      <if test="pValue2 != null" >
+        p_value2,
+      </if>
+      <if test="pValue3 != null" >
+        p_value3,
+      </if>
+      <if test="pValue4 != null" >
+        p_value4,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date,
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by,
+      </if>
+      <if test="pValueNumber != null" >
+        p_value_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pType != null" >
+        #{pType,jdbcType=VARCHAR},
+      </if>
+      <if test="pKey != null" >
+        #{pKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pValue != null" >
+        #{pValue,jdbcType=VARCHAR},
+      </if>
+      <if test="pValue2 != null" >
+        #{pValue2,jdbcType=VARCHAR},
+      </if>
+      <if test="pValue3 != null" >
+        #{pValue3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pValue4 != null" >
+        #{pValue4,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="pValueNumber != null" >
+        #{pValueNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mail.pojo.SystemParam" >
+    update system_param
+    <set >
+      <if test="pType != null" >
+        p_type = #{pType,jdbcType=VARCHAR},
+      </if>
+      <if test="pKey != null" >
+        p_key = #{pKey,jdbcType=VARCHAR},
+      </if>
+      <if test="pValue != null" >
+        p_value = #{pValue,jdbcType=VARCHAR},
+      </if>
+      <if test="pValue2 != null" >
+        p_value2 = #{pValue2,jdbcType=VARCHAR},
+      </if>
+      <if test="pValue3 != null" >
+        p_value3 = #{pValue3,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pValue4 != null" >
+        p_value4 = #{pValue4,jdbcType=DOUBLE},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null" >
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null" >
+        last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="pValueNumber != null" >
+        p_value_number = #{pValueNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mail.pojo.SystemParam" >
+    update system_param
+    set p_type = #{pType,jdbcType=VARCHAR},
+      p_key = #{pKey,jdbcType=VARCHAR},
+      p_value = #{pValue,jdbcType=VARCHAR},
+      p_value2 = #{pValue2,jdbcType=VARCHAR},
+      p_value3 = #{pValue3,jdbcType=TIMESTAMP},
+      p_value4 = #{pValue4,jdbcType=DOUBLE},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},
+      p_value_number = #{pValueNumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
