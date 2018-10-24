@@ -1,5 +1,7 @@
 package com.mail.dao;
 
+import java.util.List;
+
 import com.mail.pojo.SystemParam;
 
 public interface SystemParamMapper {
@@ -14,4 +16,6 @@ public interface SystemParamMapper {
     int updateByPrimaryKeySelective(SystemParam record);
 
     int updateByPrimaryKey(SystemParam record);
+    
+    List<SystemParam> selectByCriteria(SystemParam record);
 }
